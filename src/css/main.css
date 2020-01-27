@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-top: 20px;
+    margin: 20px auto 40px auto;
     padding: 0 10vw;
 }
 

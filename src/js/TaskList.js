@@ -36,7 +36,11 @@ class TaskList
     getList() {
         const list = this.storage.get(TaskList.storageKey);
         if (list) {
-            return JSON.parse(list);
+            const parsedList = JSON.parse(list);
+
+            return _.mapValues(parsedList, (o) => {
+                return new Task(o.id, o.title, o.description, o.stage);
+            });
         }
 
         return [];

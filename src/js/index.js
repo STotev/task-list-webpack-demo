@@ -11,17 +11,18 @@ taskList.add(new Task(null,'Some title 8', 'Some description 8'));
 taskList.add(new Task(null,'Some title 9', 'Some description 9'));
 taskList.persist();
 
-taskList.add(new Task(null,'Some title 10', 'Some description 10'));
 
-taskList.persist();
+const inProgressElement = document.querySelector('#in-progress > .content');
+
+const tasks = taskList.getList();
+for (const task in tasks) {
+    inProgressElement.innerHTML += tasks[task].render();
+}
 
 
 
 console.log(taskList.getList());
 
-window.addEventListener('unload', function () {
-    console.log('UNLOADED');
 
-});
 
 // taskList.clearList();

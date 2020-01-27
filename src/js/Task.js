@@ -51,4 +51,29 @@ class Task
     moveTo(stage) {
         this.setStage(stage);
     }
+
+    render() {
+        return `
+        <div class="task">
+            <div class="header">
+                <span class="title">${this.title}</span>
+                <div class="tools">
+                    <ul>
+                        <li>
+                            <a href="#${this.id}" class="edit">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#${this.id}" class="delete">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="description">${this.description}</div>
+        </div>
+        `;
+    }
 }

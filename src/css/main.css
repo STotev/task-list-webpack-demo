@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 0 10vw;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+header .title {
+    font-size: 48px;
+}
+
+header button {
+    width: 120px;
+    height: 45px;
+    border: 1px solid white;
+    border-radius: 4px;
+    background: #1f79ff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: 0;
+}
+
+header button:hover {
+    box-shadow: 0 0 15px -4px #1f79ff;
+    background: #1e8eff;
+}
+
+header button:active {
+    background: #3b9eff;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+main .box {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 300px;
+    padding: 10px 10px 20px 10px;
+    margin: 0 8px;
+    border-radius: 4px;
+    box-shadow: 0 3px 8px 1px rgba(0, 0, 0, 0.4);
+    height: 100%;
+}
+
+.box > .heading {
+    flex: 0;
+    height: 50px;
+    max-height: 50px;
+    font-size: 24px;
+    border-bottom: 1px solid #ccc;
+}
+
+.box > .content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.task {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1;
+    padding: 5px;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+.task:hover {
+    background: #eee;
+}
+
+.task:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.task > .header {
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+
+}
+
+.task > .header .title {
+    flex: 3;
+    font-weight: bold;
+}
+
+.task > .header .title:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.task > .header .tools {
+    flex: 1;
+    justify-items: flex-end;
+}
+
+.task > .header .tools ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.task > .header .tools ul li {
+    margin-left: 5px;
+}
+
+.task > .header .tools ul li > a.edit {
+    color: #000;
+}
+
+.task > .header .tools ul li > a.delete {
+    color: #d0211d;
+}
+
+.task > .description {
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+}

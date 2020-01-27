@@ -1,0 +1,19 @@
+{
+  "name": "todo-webpack-demo",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "webpack-cli": "^3.3.10",
+    "webpack": "^4.41.5"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.0"
+  },
+  "scripts": {
+    "build": "webpack --env dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

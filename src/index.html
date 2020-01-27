@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task System</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <span class="title">Task List</span>
+            <button type="button" class="btn">Add Task</button>
+        </header>
+
+        <main>
+            <!-- To Do -->
+            <div class="box" id="todo">
+                <div class="heading">
+                    <span>To Do</span>
+                </div>
+                <div class="content">
+                    <div class="task">
+                        <div class="header">
+                            <span class="title">Some title</span>
+                            <div class="tools">
+                                <ul>
+                                    <li>
+                                        <a href="#" class="edit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque auctor.</div>
+                    </div>
+                    <div class="task">
+                        <div class="header">
+                            <span class="title">Some title</span>
+                            <div class="tools">
+                                <ul>
+                                    <li>
+                                        <a href="#" class="edit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque auctor.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In Progress -->
+            <div class="box" id="in-progress">
+                <div class="heading">
+                    <span>In Progress</span>
+                </div>
+                <div class="content"></div>
+            </div>
+
+            <!-- On-Hold -->
+            <div class="box" id="on-hold">
+                <div class="heading">
+                    <span>On-Hold</span>
+                </div>
+                <div class="content"></div>
+            </div>
+
+            <!-- Done -->
+            <div class="box" id="done">
+                <div class="heading">
+                    <span>Done</span>
+                </div>
+                <div class="content"></div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+
+    <script src="js/constants/TaskStage.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/Storage.js"></script>
+    <script src="js/Task.js"></script>
+    <script src="js/TaskList.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

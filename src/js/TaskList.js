@@ -14,39 +14,47 @@ class TaskList
         this.list[id] = item;
     }
 
-    remove(taskId) {
-        _.unset(this.list, [taskId]);
+    removeTask(taskId) {
+        _.unset(this.list, taskId);
     }
 
-    update(taskId) {
+    moveTaskTo(stage, taskId) {
+        const stages = Object.values(TaskStage);
+        if (!stages.includes(stage)) {
+            throw new Error("Invalid stage type.");
+        }
 
+        this.list[taskId].moveTo(stage);
     }
 
     persist() {
-        const savedList = this.getList();
-        const newList = {
-            ...savedList,
-            ...this.list
-        };
-
-        this.storage.add(TaskList.storageKey, JSON.stringify(newList));
-        this.list = newList;
+        this.storage.add(TaskList.storageKey, JSON.stringify(this.list));
     }
 
     getList() {
-        const list = this.storage.get(TaskList.storageKey);
-        if (list) {
-            const parsedList = JSON.parse(list);
-
-            return _.mapValues(parsedList, (o) => {
-                return new Task(o.id, o.title, o.description, o.stage);
-            });
+        if (_.isEmpty(this.list)) {
+            this.list = this.parseList(this.storage.get(TaskList.storageKey));
         }
 
-        return [];
+        return this.list;
     }
 
     clearList() {
+        this.list = {};
         this.storage.flush();
+    }
+
+    filterBy(stage) {
+        const list = this.getList();
+
+        return _.filter(list, (o) => o.getStage() === stage);
+    }
+
+    parseList(list) {
+        const parsedList = JSON.parse(list);
+
+        return _.mapValues(parsedList, (o) => {
+            return new Task(o.id, o.title, o.description, o.stage);
+        });
     }
 }

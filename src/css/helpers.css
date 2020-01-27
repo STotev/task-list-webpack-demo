@@ -1,0 +1,27 @@
+.hide {
+    display: none;
+}
+
+.text-green {
+    color: #4cbc24;
+}
+
+.text-orange {
+    color: #e2aa22;
+}
+
+.text-default {
+    color: #000;
+}
+
+.text-danger {
+    color: #d0211d;
+}
+
+.strike {
+    text-decoration: line-through;
+}
+
+.fa {
+    font-size: 17px !important;
+}

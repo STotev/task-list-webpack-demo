@@ -28,12 +28,11 @@ header .title {
     font-size: 48px;
 }
 
-header button {
+header .btn {
     width: 120px;
     height: 45px;
     border: 1px solid white;
     border-radius: 4px;
-    background: #1f79ff;
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -41,13 +40,43 @@ header button {
     outline: 0;
 }
 
-header button:hover {
+header .btn.primary {
+    background: #1f79ff;
+}
+
+header .btn.primary:hover {
     box-shadow: 0 0 15px -4px #1f79ff;
     background: #1e8eff;
 }
 
-header button:active {
+header .btn.primary:active {
     background: #3b9eff;
+}
+
+header .btn.danger {
+    background: #e42224;
+}
+
+header .btn.danger:hover {
+    box-shadow: 0 0 15px -4px #e42224;
+    background: #ff2224;
+}
+
+header .btn.danger:active {
+    background: #ff4341;
+}
+
+header .btn.success {
+    background: #27ce1e;
+}
+
+header .btn.success:hover {
+    box-shadow: 0 0 15px -4px #27ce1e;
+    background: #29ea20;
+}
+
+header .btn.success:active {
+    background: #2cff22;
 }
 
 main {
@@ -129,14 +158,6 @@ main .box {
 
 .task > .header .tools ul li {
     margin-left: 5px;
-}
-
-.task > .header .tools ul li > a.edit {
-    color: #000;
-}
-
-.task > .header .tools ul li > a.delete {
-    color: #d0211d;
 }
 
 .task > .description {

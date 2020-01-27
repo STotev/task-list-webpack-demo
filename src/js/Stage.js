@@ -1,24 +1,16 @@
 class Stage
 {
-    static stages = {};
-
-    constructor(selector) {
-        this.el = document.querySelector(selector);
+    constructor(selector, stageType) {
+        this.$el = $(selector);
+        this.$content = $(".content", this.$el);
+        this.stage = stageType;
     }
 
-    static register(name, selector) {
-        if (Stage.stages.hasOwnProperty(name)) {
-            return;
+    display(taskList) {
+        this.$content.html('');
+
+        for (const task of taskList.filterBy(this.stage)) {
+            this.$content.append(task.render());
         }
-
-        Stage.stages[name] = new Stage(selector);
-    }
-
-    static use(name) {
-        if (!Stage.stages.hasOwnProperty(name)) {
-            throw new Error(`Stage ${name} is not registered!`);
-        }
-
-        return Stage.stages[name];
     }
 }

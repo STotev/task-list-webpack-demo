@@ -30,6 +30,10 @@ class TaskList
         this.list[taskId].moveTo(stage);
     }
 
+    updateTask(taskId, task) {
+        this.list[taskId] = task;
+    }
+
     persist() {
         this.storage.add(TaskList.storageKey, JSON.stringify(this.list));
     }

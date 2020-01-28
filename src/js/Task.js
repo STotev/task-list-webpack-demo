@@ -7,6 +7,10 @@ class Task
         this.setStage(stage);
     }
 
+    getId() {
+        return this.id;
+    }
+
     setId(id) {
         this.id = id;
     }

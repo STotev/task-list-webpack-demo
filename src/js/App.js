@@ -10,9 +10,9 @@ class App
 
         this.$modal = $('#modal');
         this.$backdrop = $('#backdrop', this.$modal);
-
         this.$titleField = $('#title', this.$modal);
         this.$descriptionField = $('#description', this.$modal);
+        this.$saveBtn = $('#saveHandle', this.$modal);
     }
 
 
@@ -61,6 +61,7 @@ class App
 
     unregisterHandlers() {
         this.$backdrop.off();
+        this.$saveBtn.off();
 
         this.$addNewTaskBtn.off();
         this.$persistBtn.off();
@@ -149,25 +150,56 @@ class App
         const id = $(e.currentTarget).attr('data-id');
         const task = this.taskList.get(id);
 
-        this._onModalOpen();
+        this._onModalOpen(task, this._onSaveEditHandler);
 
         this.$titleField.val(task.getTitle());
         this.$descriptionField.val(task.getDescription());
 
         /**
          * TODO:
-         *  - Change the modal's "Add task" button to "Save changes" On Edit
          *  - Add event when the modal's button is clicked. It should close the modal + re-render the tasks (both On Edit and On Create)
          */
     };
 
-    _onModalOpen = () => {
+    _onAddNewHandler = (e) => {
+        e.preventDefault();
+
+        this._onModalOpen(task, this._onSaveNewHandler);
+
+        /**
+         * TODO:
+         *  - Add event when the modal's button is clicked. It should close the modal + re-render the tasks (both On Edit and On Create)
+         */
+    };
+
+    _onModalOpen = (task, handler) => {
         this.$modal.addClass('show');
         this.$backdrop.on('click', this._onModalClose);
+
+        this.$saveBtn.on('click', (e) => handler(e, task));
     };
 
     _onModalClose = () => {
         this.$modal.removeClass('show');
         this.$backdrop.off();
-    }
+        this.$saveBtn.off();
+        this.$titleField.val('');
+        this.$descriptionField.val('');
+
+        this.display();
+    };
+
+    _onSaveEditHandler = (ev, task) => {
+        ev.preventDefault();
+
+        const title = this.$titleField.val();
+        const description = this.$descriptionField.val();
+
+        task.setTitle(title);
+        task.setDescription(description);
+
+        this.taskList.updateTask(task.getId(), task);
+
+        this._onModalClose();
+    };
 }

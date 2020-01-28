@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/helpers.css">
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/main.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -56,6 +57,27 @@
             </div>
         </main>
     </div>
+
+    <div id="modal">
+        <div id="backdrop"></div>
+        <div id="container">
+            <div class="header">Title</div>
+            <div class="form">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" />
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn primary">Add task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/constants/TaskStage.js"></script>
     <script src="js/helpers.js"></script>
     <script src="js/App.js"></script>

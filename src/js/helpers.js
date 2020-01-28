@@ -21,3 +21,9 @@ function storageAvailable(type) {
                 (storage && storage.length !== 0);
     }
 }
+
+function checkStageIsValid(stage) {
+    const stages = Object.values(TaskStage);
+
+    return stages.includes(stage);
+}

@@ -14,13 +14,16 @@ class TaskList
         this.list[id] = item;
     }
 
+    get(taskId) {
+        return this.list[taskId];
+    }
+
     removeTask(taskId) {
         _.unset(this.list, taskId);
     }
 
     moveTaskTo(stage, taskId) {
-        const stages = Object.values(TaskStage);
-        if (!stages.includes(stage)) {
+        if (!checkStageIsValid(stage)) {
             throw new Error("Invalid stage type.");
         }
 
@@ -54,7 +57,13 @@ class TaskList
         const parsedList = JSON.parse(list);
 
         return _.mapValues(parsedList, (o) => {
-            return new Task(o.id, o.title, o.description, o.stage);
+            const task = new Task();
+            task.setId(o.id);
+            task.setTitle(o.title);
+            task.setDescription(o.description);
+            task.setStage(o.stage);
+
+            return task;
         });
     }
 }

@@ -1,7 +1,7 @@
 class Task
 {
-    constructor(id = null, title, description, stage = TaskStage.TODO) {
-        this.setId(id);
+    constructor(title = null, description = null, stage = TaskStage.TODO) {
+        this.setId(null);
         this.setTitle(title);
         this.setDescription(description);
         this.setStage(stage);
@@ -9,10 +9,6 @@ class Task
 
     setId(id) {
         this.id = id;
-    }
-
-    getId() {
-        return this.id;
     }
 
     getTitle() {
@@ -40,8 +36,7 @@ class Task
     }
 
     setStage(value) {
-        const stages = Object.values(TaskStage);
-        if (!stages.includes(value)) {
+        if (!checkStageIsValid(value)) {
             throw new Error("Invalid stage type.");
         }
 

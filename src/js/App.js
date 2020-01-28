@@ -7,6 +7,12 @@ class App
         this.$addNewTaskBtn = $('#addNewTaskHandle');
         this.$persistBtn = $('#persistListHandle');
         this.$deleteAllBtn = $('#deleteAllHandle');
+
+        this.$modal = $('#modal');
+        this.$backdrop = $('#backdrop', this.$modal);
+
+        this.$titleField = $('#title', this.$modal);
+        this.$descriptionField = $('#description', this.$modal);
     }
 
 
@@ -40,18 +46,22 @@ class App
         this.setToolButtons();
         this.unregisterHandlers();
 
+        this.$backdrop.on('click', this._onModalClose);
+
         this.$addNewTaskBtn.on('click');
         this.$persistBtn.on('click', this._onPersistHandler);
         this.$deleteAllBtn.on('click', this._onDeleteAllHandler);
 
         this.$startBtn.on('click', this._onStartHandler);
-        this.$editBtn.on('click');
+        this.$editBtn.on('click', this._onEditHandler);
         this.$deleteBtn.on('click', this._onDeleteHandler);
         this.$completeBtn.on('click', this._onCompleteHandler);
         this.$pauseBtn.on('click', this._onPauseHandler);
     }
 
     unregisterHandlers() {
+        this.$backdrop.off();
+
         this.$addNewTaskBtn.off();
         this.$persistBtn.off();
         this.$deleteAllBtn.off();
@@ -122,7 +132,7 @@ class App
 
         this.taskList.moveTaskTo(TaskStage.DONE, id);
         this.display();
-    }
+    };
 
     _onPauseHandler = (e) => {
         e.preventDefault();
@@ -131,5 +141,33 @@ class App
 
         this.taskList.moveTaskTo(TaskStage.ON_HOLD, id);
         this.display();
+    };
+
+    _onEditHandler = (e) => {
+        e.preventDefault();
+
+        const id = $(e.currentTarget).attr('data-id');
+        const task = this.taskList.get(id);
+
+        this._onModalOpen();
+
+        this.$titleField.val(task.getTitle());
+        this.$descriptionField.val(task.getDescription());
+
+        /**
+         * TODO:
+         *  - Change the modal's "Add task" button to "Save changes" On Edit
+         *  - Add event when the modal's button is clicked. It should close the modal + re-render the tasks (both On Edit and On Create)
+         */
+    };
+
+    _onModalOpen = () => {
+        this.$modal.addClass('show');
+        this.$backdrop.on('click', this._onModalClose);
+    };
+
+    _onModalClose = () => {
+        this.$modal.removeClass('show');
+        this.$backdrop.off();
     }
 }

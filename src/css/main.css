@@ -28,54 +28,55 @@ header .title {
     font-size: 48px;
 }
 
-header .btn {
+.btn {
     width: 120px;
     height: 45px;
     border: 1px solid white;
     border-radius: 4px;
     color: white;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 18px;
+    /*font-weight: bold;*/
+    font-family: 'Oswald', sans-serif;
     cursor: pointer;
     outline: 0;
 }
 
-header .btn.primary {
+.btn.primary {
     background: #1f79ff;
 }
 
-header .btn.primary:hover {
+.btn.primary:hover {
     box-shadow: 0 0 15px -4px #1f79ff;
     background: #1e8eff;
 }
 
-header .btn.primary:active {
+.btn.primary:active {
     background: #3b9eff;
 }
 
-header .btn.danger {
+.btn.danger {
     background: #e42224;
 }
 
-header .btn.danger:hover {
+.btn.danger:hover {
     box-shadow: 0 0 15px -4px #e42224;
     background: #ff2224;
 }
 
-header .btn.danger:active {
+.btn.danger:active {
     background: #ff4341;
 }
 
-header .btn.success {
+.btn.success {
     background: #27ce1e;
 }
 
-header .btn.success:hover {
+.btn.success:hover {
     box-shadow: 0 0 15px -4px #27ce1e;
-    background: #29ea20;
+    background: #26dc1f;
 }
 
-header .btn.success:active {
+.btn.success:active {
     background: #2cff22;
 }
 

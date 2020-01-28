@@ -48,7 +48,7 @@ class App
 
         this.$backdrop.on('click', this._onModalClose);
 
-        this.$addNewTaskBtn.on('click');
+        this.$addNewTaskBtn.on('click', this._onAddNewHandler);
         this.$persistBtn.on('click', this._onPersistHandler);
         this.$deleteAllBtn.on('click', this._onDeleteAllHandler);
 
@@ -150,7 +150,7 @@ class App
         const id = $(e.currentTarget).attr('data-id');
         const task = this.taskList.get(id);
 
-        this._onModalOpen(task, this._onSaveEditHandler);
+        this._onModalOpen(this._onSaveEditHandler.bind(null, task));
 
         this.$titleField.val(task.getTitle());
         this.$descriptionField.val(task.getDescription());
@@ -164,7 +164,7 @@ class App
     _onAddNewHandler = (e) => {
         e.preventDefault();
 
-        this._onModalOpen(task, this._onSaveNewHandler);
+        this._onModalOpen(this._onSaveNewHandler);
 
         /**
          * TODO:
@@ -172,11 +172,11 @@ class App
          */
     };
 
-    _onModalOpen = (task, handler) => {
+    _onModalOpen = (handler) => {
         this.$modal.addClass('show');
         this.$backdrop.on('click', this._onModalClose);
 
-        this.$saveBtn.on('click', (e) => handler(e, task));
+        this.$saveBtn.on('click', handler);
     };
 
     _onModalClose = () => {
@@ -189,9 +189,7 @@ class App
         this.display();
     };
 
-    _onSaveEditHandler = (ev, task) => {
-        ev.preventDefault();
-
+    _onSaveEditHandler = (task) => {
         const title = this.$titleField.val();
         const description = this.$descriptionField.val();
 
@@ -201,5 +199,17 @@ class App
         this.taskList.updateTask(task.getId(), task);
 
         this._onModalClose();
+    };
+
+    _onSaveNewHandler = () => {
+        const task = new Task();
+        task.setTitle(this.$titleField.val());
+        task.setDescription(this.$descriptionField.val());
+
+        this.taskList.add(task);
+
+        this._onModalClose();
+
+        this.display();
     };
 }

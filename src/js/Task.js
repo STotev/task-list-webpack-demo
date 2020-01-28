@@ -91,7 +91,7 @@ class Task
                     </ul>
                 </div>
             </div>
-            <div class="description">${this.description}</div>
+            <div class="description">${this.description.replace(/\n/g, "<br />")}</div>
         </div>
         `;
     }

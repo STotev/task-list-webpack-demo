@@ -1,7 +1,5 @@
 class TaskList
 {
-    static storageKey = 'todoList';
-
     constructor() {
         this.storage = new Storage();
         this.list = {};
@@ -35,12 +33,12 @@ class TaskList
     }
 
     persist() {
-        this.storage.add(TaskList.storageKey, JSON.stringify(this.list));
+        this.storage.add(Storage.key, JSON.stringify(this.list));
     }
 
     getList() {
         if (_.isEmpty(this.list)) {
-            this.list = this.parseList(this.storage.get(TaskList.storageKey));
+            this.list = this.parseList(this.storage.get(Storage.key));
         }
 
         return this.list;

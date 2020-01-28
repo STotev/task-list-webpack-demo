@@ -1,4 +1,6 @@
 class Storage {
+    static key = 'todoList';
+
     constructor() {
         if (!storageAvailable('localStorage')) {
             throw new Error("localStorage not supported.");
@@ -20,7 +22,7 @@ class Storage {
     }
 
     flush() {
-        this.storage.clear();
+        this.storage.removeItem(Storage.key);
     }
 }
 
